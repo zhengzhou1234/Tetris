@@ -37,6 +37,7 @@ var Game=function(){
 	//divs
 	var nextDivs=[];
 	var gameDivs=[];
+	var holdDivs=[];
 	//初始化div
 	var initDiv=function(container,data,divs){
 	for(var i=0;i<data.length;i++){
@@ -66,6 +67,7 @@ var Game=function(){
 		}
 		}
 	}
+	//刷新不同方块颜色
 	//检查点是否合法
 	var check=function(pos,x,y){
 		if(pos.x+x<0){
@@ -211,6 +213,11 @@ var Game=function(){
 		refreshDiv(gameData,gameDivs);
 		refreshDiv(next.data,nextDivs);
 	}
+	//刷新方块
+	var shift=function(){
+		clearData();
+		performNext();
+	}
 	//设置时间
 	var setTime=function(time){
 		timeDiv.innerHTML = time;
@@ -236,12 +243,16 @@ var Game=function(){
 		score = score + s;
 		scoreDiv.innerHTML = score;
 	}
-	//游戏结束
+	//单人游戏结束
+	var singleGameOver=function(){
+		resultDiv.innerHTML='恭喜获得：' + scoreDiv.firstChild.nodeValue + '分！';
+	}
+	//双人PK游戏结束
 	var gameOver=function(win){
 		if(win){
-			resultDiv.innerHTML = '你赢了';
+			resultDiv.innerHTML = 'WIN!';
 		}else{
-			resultDiv.innerHTML = '你输了';
+			resultDiv.innerHTML = 'LOSE!';
 		}
 	}
 	//底部增加行（干扰）
@@ -278,11 +289,13 @@ var Game=function(){
 	this.rotate = rotate;
 	this.fall = function() {while(down());};
 	this.fixed = fixed;	
+	this.shift = shift;
 	this.performNext = performNext;
 	this.checkClear = checkClear;
 	this.chenckGameOver = chenckGameOver;
 	this.setTime = setTime;
 	this.addScore = addScore;
 	this.gameOver = gameOver;
+	this.singleGameOver = singleGameOver;
 	this.addTailLines = addTailLines;
 }

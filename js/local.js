@@ -27,6 +27,8 @@ var Local=function(socket){
 			}else if(e.keyCode==32){//space-用作坠落
 				game.fall();
 				socket.emit('fall');
+			}else if(e.keyCode==16){//shift-用作置换
+				game.shift();
 			}
 		}
 	}
@@ -48,7 +50,7 @@ var Local=function(socket){
 			var gameOver=game.chenckGameOver();
 			if(gameOver){
 				game.gameOver(false);
-				document.getElementById('remote_gameover').innerHTML = '你赢了';
+				document.getElementById('remote_gameover').innerHTML = 'WIN!';
 				socket.emit('lose');
 				stop();
 			}else{
@@ -126,7 +128,7 @@ var Local=function(socket){
 	}
 	
 	socket.on('start',function(){
-		document.getElementById('waiting').innerHTML = '';
+		document.getElementById('waiting').innerHTML = '游戏开始！';
 		start();
 	});
 	

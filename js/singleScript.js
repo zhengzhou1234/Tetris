@@ -1,0 +1,1 @@
+var local=new Local();

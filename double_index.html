@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>Tetris</title>
+		<link rel="stylesheet" type="text/css" href="css/double_style.css"/>
+	</head>
+	<body>
+		<fieldset class="introduce">
+			<legend>Tips</legend>
+			按键->操作：
+			&nbsp;&nbsp;&nbsp;上->旋转<br />
+			&nbsp;&nbsp;&nbsp;左->左移<br />	
+			&nbsp;&nbsp;&nbsp;右->右移<br />
+			&nbsp;&nbsp;&nbsp;下->下移<br />
+			shift->刷新<br />
+			空格->坠落
+		</fieldset>
+		
+		<div id="waiting">匹配中...</div>
+		
+		<div class="back">
+			<a href="menu.html" id="back">
+				<img src="img/上一步02.png"/>back
+			</a>
+		</div>
+		<div class="double_field">
+			<div class="square" id="local">
+				
+				<div class="title">己方</div>
+				
+				<div class="local_score">已得分：<span id="local_score">0</span>分</div>
+				<div class="game_field">
+					<div class="game" id="local_game"></div>
+				</div>
+				
+				<div class="next_field">NEXT</div>
+				<div class="next" id="local_next"></div>
+				
+				<div class="time_field">TIME</div>
+				<div class="time">
+					<span id="local_time">0</span>&nbsp;s
+				</div>
+				
+				<div class="info">
+					<div class="info_show" id="local_gameover"></div>
+				</div>
+			</div>
+			
+			<div id="vs_field">VS</div>
+			
+			<div class="square" id="remote">
+				
+				<div class="title">对手</div>
+				
+				<div class="remote_score">已得分：<span id="remote_score">0</span>分</div>
+				<div class="game_field">
+					<div class="game" id="remote_game"></div>
+				</div>
+				
+				<div class="next_field">NEXT</div>
+				<div class="next" id="remote_next"></div>
+				
+				<div class="time_field">TIME</div>
+				<div class="time">
+					<span id="remote_time">0</span>&nbsp;s
+				</div>
+				
+				<div class="info">
+					<div class="info_show"  id="remote_gameover"></div>
+				</div>
+			</div>
+		</div>
+		<audio src="img/bgm.mp3" id="music"  loop="loop"  autoplay></audio>
+		<div id="music1">
+			<img id="music_img" src="img/music_button.png"/ onclick="controlMusic()">
+		</div>
+		
+		<script type="text/javascript" src="js/music.js"></script>
+		<script type="text/javascript" src="socket.io-2.0.3.js"></script>
+		<script type="text/javascript" src="js/square.js"></script>
+		<script type="text/javascript" src="js/squareFactory.js"></script>
+		<script type="text/javascript" src="js/game.js"></script>
+		<script type="text/javascript" src="js/local.js"></script>
+		<script type="text/javascript" src="js/remote.js"></script>
+		<script type="text/javascript" src="js/script.js"></script>
+	</body>
+</html>

@@ -37,7 +37,7 @@ Square.prototype.rotate=function(num){
 			this.data[i][j]=this.rotates[this.dir][i][j];
 		}
 	}	
-};
+}
 Square.prototype.canDown=function(isValid){
 	var test={};
 	test.x=this.origin.x+1;

@@ -32,7 +32,7 @@ io.on('connection',function(socket){
 	socketMap[clientCount] = socket;
 	
 	if(clientCount % 2 == 1){
-		socket.emit('waiting','waiting for another person');
+		socket.emit('waiting','匹配中...');
 	}else{
 		if(socketMap[clientCount - 1]){
 			socket.emit('start');
